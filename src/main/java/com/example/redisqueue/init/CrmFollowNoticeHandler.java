@@ -18,25 +18,26 @@ public class CrmFollowNoticeHandler implements  Runnable {
 
     @Override
     public void run() {
-////        RBlockingQueue<Trunk> blockingQueue = redissonClient.getBlockingQueue("queue");
-//
-//        while (true){
-//            Trunk trunk = null;
-//            try {
-//                trunk = blockingQueue.take();
-//                System.out.println(trunk.getId());
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        RBlockingQueue<Trunk> blockingQueue = redissonClient.getBlockingQueue("queue");
         while (true){
-            List<String> result = jedisPool.getResource().blpop(Integer.MAX_VALUE,"queue");
-            if (result != null && result.size() > 1) {
-                String key = result.get(1);
-                System.out.println(key);
-
+            Trunk trunk = null;
+            try {
+                trunk = blockingQueue.take();
+                System.out.println("取出===="+trunk.getId());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
+
+
+//        while (true){
+//            List<String> result = jedisPool.getResource().blpop(Integer.MAX_VALUE,"queue");
+//            if (result != null && result.size() > 1) {
+//                String key = result.get(1);
+//                System.out.println(key);
+//
+//            }
+//        }
 
 
     }
