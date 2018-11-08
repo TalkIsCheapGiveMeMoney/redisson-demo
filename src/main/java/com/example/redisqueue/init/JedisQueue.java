@@ -21,7 +21,7 @@ public class JedisQueue {
      public static void main(String args[]) {
 
          try {
-             JedisPool jedisPool = new JedisPool(new URI("redis://:ps666@47.96.182.140:9527/1"));
+             JedisPool jedisPool = new JedisPool(new URI("redis://:ps666@192.168.19.173:6379/1"));
              Jedis jedis = jedisPool.getResource();
 
              for (int i = 0; i < 5; i++) {

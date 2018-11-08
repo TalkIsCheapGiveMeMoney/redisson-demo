@@ -19,7 +19,7 @@ public class PutInQueue {
      public static void main(String args[]) {
          Config config = new Config();
          SingleServerConfig serverConfig = config.useSingleServer()
-                 .setAddress("redis://47.96.182.140:9527")
+                 .setAddress("redis://192.168.19.173:6379")
                  .setConnectionPoolSize(50)
                  .setConnectionMinimumIdleSize(20);
 
