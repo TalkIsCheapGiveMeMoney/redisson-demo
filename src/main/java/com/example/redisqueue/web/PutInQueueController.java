@@ -30,4 +30,18 @@ public class PutInQueueController {
         return  id;
 
     }
+
+    @RequestMapping("/orderno/{id}")
+    public String putNo(@PathVariable("id") String id){
+        Trunk trunk = new Trunk();
+        trunk.setId(id);
+        RBlockingQueue<Trunk> blockingQueue = redissonClient.getBlockingQueue("queue");
+        try {
+            blockingQueue.put(trunk);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return  id;
+
+    }
 }
